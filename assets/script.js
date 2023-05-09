@@ -20,15 +20,20 @@ const app = Vue.createApp({
     },
     methods: {
         addTask(){
-            let clearTask = {
-                text: this.newTask.trim(),
-                done: true
+            if (this.newTask.trim() != "") {
+                let clearTask = {
+                    text: this.newTask.trim(),
+                    done: true
+                }
+                this.todoList.unshift(clearTask);
+                this.newTask = "";
             }
-            this.todoList.unshift(clearTask);
-            this.newTask = "";
         },
         removeTask(i){
             this.todoList.splice(i, 1);
+        },
+        lineThrough(i){
+            return this.todoList[i].done = !this.todoList[i].done;
         }
     }
 });
