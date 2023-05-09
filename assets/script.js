@@ -33,7 +33,9 @@ const app = Vue.createApp({
             this.todoList.splice(i, 1);
         },
         lineThrough(i){
-            return this.todoList[i].done = !this.todoList[i].done;
+            if (this.todoList.length == 0) {
+                return this.todoList[i].done = !this.todoList[i].done;
+            }
         }
     }
 });
